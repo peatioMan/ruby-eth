@@ -23,6 +23,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'ffi', '~> 1.0'
   spec.add_dependency 'money-tree', '~> 0.9'
   spec.add_dependency 'rlp', '~> 0.7.3'
+  spec.add_dependency 'activesupport', '~> 5.1'
+  spec.add_dependency 'bitcoin-ruby', '0.0.11'
+  spec.add_dependency 'rbnacl', '~> 5.0'
 
   spec.add_development_dependency 'bundler', '~> 1.12'
   spec.add_development_dependency 'pry', '~> 0.1'

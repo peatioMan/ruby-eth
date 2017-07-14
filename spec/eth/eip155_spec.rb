@@ -1,5 +1,5 @@
 describe 'EIP 155 and replay protection' do
-  let(:key) { Eth::Key.new priv: '4646464646464646464646464646464646464646464646464646464646464646' }
+  let(:key) { Eth::Key.default priv: '4646464646464646464646464646464646464646464646464646464646464646' }
 
   context "EIP155 example", chain_id: 1 do
     #via https://github.com/ethereum/EIPs/issues/155#issue-183002027

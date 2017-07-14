@@ -121,7 +121,7 @@ class Eth::Key::Encrypter
   end
 
   def address
-    Eth::Key.new(priv: key).address
+    Eth::Key.default(priv: key).address
   end
 
 end

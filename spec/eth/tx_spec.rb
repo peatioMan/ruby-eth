@@ -63,7 +63,7 @@ describe Eth::Tx, type: :model do
   end
 
   describe ".decode" do
-    let(:key) { Eth::Key.new }
+    let(:key) { Eth::Key.default }
     let(:tx1) { tx.sign key }
 
     it "returns an instance that matches the original enocded one" do
@@ -81,7 +81,7 @@ describe Eth::Tx, type: :model do
     let(:v) { nil }
     let(:r) { nil }
     let(:s) { nil }
-    let(:key) { Eth::Key.new }
+    let(:key) { Eth::Key.default }
 
     it "creates a recoverable signature for the transaction" do
       tx.sign key
@@ -91,7 +91,7 @@ describe Eth::Tx, type: :model do
   end
 
   describe "#to_h" do
-    let(:key) { Eth::Key.new }
+    let(:key) { Eth::Key.default }
 
     before { tx.sign key }
 
@@ -121,7 +121,7 @@ describe Eth::Tx, type: :model do
   end
 
   describe "#hex" do
-    let(:key) { Eth::Key.new }
+    let(:key) { Eth::Key.default }
 
     it "creates a hex representation" do
       tx = Eth::Tx.new({
@@ -138,7 +138,7 @@ describe Eth::Tx, type: :model do
   end
 
   describe "#from" do
-    let(:key) { Eth::Key.new }
+    let(:key) { Eth::Key.default }
     subject { tx.from }
 
     context "when the signature is present" do

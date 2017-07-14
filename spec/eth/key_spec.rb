@@ -1,19 +1,19 @@
 describe Eth::Key, type: :model do
   let(:priv) { nil }
-  subject(:key) { Eth::Key.new priv: priv }
+  subject(:key) { Eth::Key.default priv: priv }
 
   describe "#initialize" do
     it "returns a key with a new private key" do
-      key1 = Eth::Key.new
-      key2 = Eth::Key.new
+      key1 = Eth::Key.default
+      key2 = Eth::Key.default
 
       expect(key1.private_hex).not_to eq(key2.private_hex)
       expect(key1.public_hex).not_to eq(key2.public_hex)
     end
 
     it "regenerates an old private key" do
-      key1 = Eth::Key.new
-      key2 = Eth::Key.new priv: key1.private_hex
+      key1 = Eth::Key.default
+      key2 = Eth::Key.default priv: key1.private_hex
 
       expect(key1.private_hex).to eq(key2.private_hex)
       expect(key1.public_hex).to eq(key2.public_hex)
@@ -108,7 +108,7 @@ describe Eth::Key, type: :model do
     # see: https://github.com/ethereum/wiki/wiki/Web3-Secret-Storage-Definition
 
     let(:password) { SecureRandom.base64 }
-    let(:key) { Eth::Key.new }
+    let(:key) { Eth::Key.default }
 
     it "reads and writes keys in the Ethereum Secret Storage definition" do
       encrypted = Eth::Key.encrypt key, password

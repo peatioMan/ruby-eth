@@ -2,6 +2,11 @@ require 'digest/sha3'
 require 'ffi'
 require 'money-tree'
 require 'rlp'
+require 'bitcoin'
+require 'rbnacl'
+require 'pry'
+require 'active_support'
+require 'active_support/core_ext'
 
 module Eth
   BYTE_ZERO = "\x00".freeze
@@ -15,6 +20,7 @@ module Eth
   autoload :Sedes, 'eth/sedes'
   autoload :Tx, 'eth/tx'
   autoload :Utils, 'eth/utils'
+  autoload :Vault, 'eth/vault'
 
   class << self
     def configure
