@@ -93,7 +93,7 @@ key = v.get_key(2)
 # Specify an HD Root Path (see: https://github.com/ethereum/EIPs/issues/84)
 
 v = Eth::Vault.new({secret_seed_phrase: "trouble mesh impact indoor inquiry aim index deposit weekend alter pottery chef eye page elder awesome paper sport arch illegal muscle another blossom arctic"}, "m/44'/60'/0'/0/0")
-
+key = v.get_key
 
 ```
 
