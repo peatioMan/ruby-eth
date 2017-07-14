@@ -4,7 +4,6 @@ require 'money-tree'
 require 'rlp'
 require 'bitcoin'
 require 'rbnacl'
-require 'pry'
 require 'active_support'
 require 'active_support/core_ext'
 
