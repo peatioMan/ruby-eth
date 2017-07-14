@@ -29,7 +29,7 @@ module Eth
 
       def from_node(node)
         key = self.new
-        private_key = MoneyTree::PrivateKey.new(node.private_key)
+        private_key = MoneyTree::PrivateKey.new(key: node.private_key.to_hex)
         public_key = MoneyTree::PublicKey.new(node.private_key, compressed: false)
         key.private_key = private_key
         key.public_key = public_key

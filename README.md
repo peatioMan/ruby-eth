@@ -77,6 +77,36 @@ Or add a checksum to an existing address:
 Eth::Utils.format_address "0x4bc787699093f11316e819b5692be04a712c4e69" # => "0x4bc787699093f11316e819B5692be04A712C4E69"
 ```
 
+### HD Vaults
+
+This branch adds HD wallet functionality which can be seeded with Trezor style mnemonic words.
+
+```ruby
+# Create a new vault
+v = Eth::Vault.new
+key = v.get_key(1) 
+
+# Restore a vault from a mnemonic
+v = Eth::Vault.new(secret_seed_phrase: "trouble mesh impact indoor inquiry aim index deposit weekend alter pottery chef eye page elder awesome paper sport arch illegal muscle another blossom arctic")
+key = v.get_key(2)
+
+# Specify an HD Root Path (see: https://github.com/ethereum/EIPs/issues/84)
+
+v = Eth::Vault.new({secret_seed_phrase: "trouble mesh impact indoor inquiry aim index deposit weekend alter pottery chef eye page elder awesome paper sport arch illegal muscle another blossom arctic"}, "m/44'/60'/0'/0/0")
+
+
+```
+
+### web3.eth.sign functionality
+
+You can sign arbitrary messages which can be verified on the EVM using ecrecover.  
+
+```
+v = Eth::Vault.new
+signer = Eth::RpcSigner.new(v.get_key)
+a = signer.sign_message('foobar')
+```
+
 ### Configure
 In order to prevent replay attacks, you must specify which Ethereum chain your transactions are created for. See [EIP 155](https://github.com/ethereum/EIPs/issues/155) for more detail.
 ```ruby
@@ -100,7 +130,6 @@ Then run the associated tests:
 ```shell
 rspec
 ```
-
 
 ## License
 

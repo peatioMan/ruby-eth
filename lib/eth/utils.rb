@@ -1,7 +1,13 @@
 module Eth
   module Utils
 
-    extend self
+   extend self
+
+   def prefix_message(message)
+     prefix = "\u0019Ethereum Signed Message:\n#{message.length}"
+     return "#{prefix}#{message}"
+   end
+
 
     def normalize_address(address)
       if address.nil? || address == ''
@@ -86,7 +92,7 @@ module Eth
     end
 
     def zunpad(x)
-      x.sub /\A\x00+/, ''
+      x.sub(/\A\x00+/, '')
     end
 
     def zpad_int(n, l=32)

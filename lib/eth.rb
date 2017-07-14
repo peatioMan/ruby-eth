@@ -21,6 +21,8 @@ module Eth
   autoload :Tx, 'eth/tx'
   autoload :Utils, 'eth/utils'
   autoload :Vault, 'eth/vault'
+  autoload :RpcSigner, 'eth/rpc_signer'
+  autoload :Signature, 'eth/signature'
 
   class << self
     def configure
