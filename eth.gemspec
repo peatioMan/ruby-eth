@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'eth/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "eth"
+  spec.name          = "digix-eth"
   spec.version       = Eth::VERSION
-  spec.authors       = ["Steve Ellis"]
-  spec.email         = ["email@steveell.is"]
+  spec.authors       = ["Steve Ellis", "DigixGlobal"]
+  spec.email         = ["email@steveell.is", "support@digix.io"]
 
   spec.summary       = %q{Simple API to sign Ethereum transactions.}
-  spec.description   = %q{Library to build, parse, and sign Ethereum transactions.}
-  spec.homepage      = "https://github.com/se3000/ruby-eth"
+  spec.description   = %q{Forked from: github.com/se3000/ruby-eth. Library to build, parse, and sign Ethereum transactions. This forked gem adds additional support for Trezor style mnemonic and RPC signing}
+  spec.homepage      = "https://github.com/digixglobal/ruby-eth"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
