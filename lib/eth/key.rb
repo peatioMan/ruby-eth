@@ -85,6 +85,24 @@ module Eth
       public_hex == OpenSsl.recover_compact(hash, signature)
     end
 
+    def get_signer_key(message, signature)
+      hash = message_hash(message)
+      signer_public_hex = OpenSsl.recover_compact(hash, signature)
+      signer_public_key = MoneyTree::PublicKey.new(signer_public_hex, compressed: false)
+      signer_key = Eth::Key.new
+      signer_key.public_key = signer_public_key
+      return signer_key
+    end
+
+    def verify_rpc_signature(message, signature, signer_address)
+      signer = get_signer_key(message, signature)
+      signer.address == signer_address 
+    end
+
+    def verify_rpc_signature_no_prefix(message, signature, signer_address)
+      prefixed_message = Eth::Utils.prefix_message(message)
+      verify_rpc_signature(prefixed_message, signature, signer_address) 
+    end
 
     private
 

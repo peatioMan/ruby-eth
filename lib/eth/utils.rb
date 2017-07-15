@@ -37,6 +37,21 @@ module Eth
       RLP::Sedes.big_endian_int.serialize int
     end
 
+    def from_rpc_signature_hex(signature)
+      buffer = Eth::Utils.hex_to_bin(signature).bytes
+      if buffer.length != 65
+        raise ArgumentError.new('Invalid signature length')
+      end
+      v = buffer[64]
+      v += 27 if v < 27
+      r = buffer[0..32]
+      s = buffer[33..64]
+      signature = [v, r, s].flatten.pack('C*')
+      signature_hex = Eth::Util.bin_to_prefixed_hex(signature)
+      payload = {v: v, r: r, s: s, signature: signature, signature_hex: signature_hex}
+      return payload
+    end
+
     def v_r_s_for(signature)
       [
         signature[0].bytes[0],

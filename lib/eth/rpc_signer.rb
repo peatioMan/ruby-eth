@@ -1,7 +1,6 @@
 module Eth
   class RpcSigner
 
-
     attr_accessor :key
 
     def initialize(key)
