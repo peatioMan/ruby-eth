@@ -31,7 +31,7 @@ module Eth
 
     attr_accessor :message, 
                   :signer, 
-                  :prefixed_message, 
+                  :padded_message,
                   :hash, 
                   :signature, 
                   :rpc_signature, 
